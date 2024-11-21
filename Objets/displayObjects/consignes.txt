@@ -1,0 +1,4 @@
+1. Créer un tableau de 5 objets avec leurs paramètres.
+2. Les faires apparaître sur une liste simple.
+3. Soigner l'affichage.
+4. Optionnel: afficher des images en miniatures

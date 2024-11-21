@@ -1,0 +1,42 @@
+const Objects = [
+	{
+		artist: "Mitski",
+		album: "Be the Cowboy",
+		year: 2018,
+		cover: "#",
+		songs: 14,
+		duration: "00:32:34",
+	},
+	{
+		artist: "Black Sabbath",
+		album: "13 (Deluxe Edition)",
+		year: 2013,
+		cover: "#",
+		songs: 11,
+		duration: "01:08:00",
+	},
+	{
+		artist: "Electric Wizard",
+		album: "Funeralopolis",
+		year: 2000,
+		cover: "#",
+		songs: 9,
+		duration: "01:15:00",
+	},
+	{
+		artist: "Billie Eilish",
+		album: "HIT ME HARD AND SOFT",
+		year: 2024,
+		cover: "#",
+		songs: 10,
+		duration: "00:43:50",
+	},
+	{
+		artist: "El Tigr3",
+		album: "Man-Eater",
+		year: 2016,
+		cover: "#",
+		songs: 7,
+		duration: "00:22:51",
+	},
+];
