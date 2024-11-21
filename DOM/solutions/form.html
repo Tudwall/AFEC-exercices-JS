@@ -1,0 +1,26 @@
+<!-- Consigne :
+Créez un formulaire avec un champ texte et un bouton "Ajouter". Lorsque l’utilisateur saisit un texte et clique sur le bouton, un nouvel élément <li> est ajouté dans une liste <ul>. Empêchez d’ajouter un élément vide. -->
+
+<form id="form">
+	<input type="text" id="input" placeholder="Entrez un élément" />
+	<button type="submit">Ajouter</button>
+</form>
+<ul id="liste"></ul>
+<script>
+	const form = document.getElementById('form');
+	const input = document.getElementById('input');
+	const ul = document.getElementById('liste');
+
+	form.addEventListener('submit', (e) => {
+		e.preventDefault();
+		const value = input.value.trim();
+		if (value !== '') {
+			const li = document.createElement('li');
+			li.textContent = value;
+			ul.appendChild(li);
+			input.value = ''; // Réinitialise le champ
+		} else {
+			alert('Veuillez entrer un texte !');
+		}
+	});
+</script>

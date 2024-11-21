@@ -1,0 +1,24 @@
+<!-- Consigne : Ajoutez un bouton qui, lorsqu'il est cliqué, alterne la classe highlight sur le paragraphe suivant. -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<p id="texte">Cliquez sur le bouton pour surligner ce texte.</p>
+		<button id="toggle-btn">Alterner</button>
+		<style>
+			.highlight {
+				background-color: yellow;
+			}
+		</style>
+		<script>
+			document.getElementById('toggle-btn').addEventListener('click', () => {
+				document.getElementById('texte').classList.toggle('highlight');
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!-- Consigne :
+Créez un formulaire avec un champ texte et un bouton "Ajouter". Lorsque l’utilisateur saisit un texte et clique sur le bouton, un nouvel élément <li> est ajouté dans une liste <ul>. Empêchez d’ajouter un élément vide. -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const textArea = document.createElement("textarea");
+			const ul = document.createElement("ul");
+
+			const btnAdd = document.createElement("button");
+			btnAdd.textContent = "Ajouter";
+
+			btnAdd.addEventListener("click", () => {
+				if (textArea.value) {
+					const li = document.createElement("li");
+					li.textContent = textArea.value;
+					ul.appendChild(li);
+					textArea.value = "";
+				}
+			});
+
+			document.body.appendChild(textArea);
+			document.body.appendChild(btnAdd);
+			document.body.appendChild(ul);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<!-- Consigne : Déplacez le dernier <li> de la liste dans une autre liste. -->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<ul id="liste1">
+			<li>Item A</li>
+			<li>Item B</li>
+		</ul>
+		<ul id="liste2">
+			<li>Item C</li>
+		</ul>
+		<script>
+			const liste1 = document.getElementById('liste1');
+			const liste2 = document.getElementById('liste2');
+			const item = liste1.lastChild;
+			liste2.appendChild(item);
+		</script>
+	</body>
+</html>

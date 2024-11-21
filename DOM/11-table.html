@@ -1,0 +1,39 @@
+<!-- Consigne :
+Créez un tableau <table> HTML à partir du tableau suivant et ajoutez-le à la page. Les éléments de la première ligne doivent être en gras. -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const data = [
+				["Nom", "Prénom", "Âge"],
+				["Dupont", "Jean", 25],
+				["Martin", "Alice", 30],
+				["Durand", "Claire", 28],
+			];
+
+			const table = document.createElement("table");
+			data.forEach((row, element) => {
+				let line = document.createElement("tr");
+				row.forEach((data) => {
+					/* const cell = document.createElement(element == 0 ? "th" : "td"); */
+					let cell = 0;
+					if (element == 0) {
+						cell = document.createElement("th");
+					} else {
+						cell = document.createElement("td");
+					}
+					cell.textContent = data;
+					line.appendChild(cell);
+				});
+				table.appendChild(line);
+			});
+			document.body.appendChild(table);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!-- 
+Consigne :
+Ajoutez une barre de progression <div> sur la page avec un bouton "Augmenter". À chaque clic sur le bouton, la largeur de la barre augmente de 10% jusqu’à un maximum de 100%. -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div
+			id="progress-container"
+			style="width: 100%; height: 20px; background: lightgray">
+			<div
+				id="progress-bar"
+				style="width: 0; height: 100%; background: green"></div>
+		</div>
+		<button id="augmenter">Augmenter</button>
+		<script>
+			const progressBar = document.getElementById('progress-bar');
+			const button = document.getElementById('augmenter');
+			let progress = 0;
+
+			button.addEventListener('click', () => {
+				if (progress < 100) {
+					progress += 10;
+					progressBar.style.width = `${progress}%`;
+				}
+			});
+		</script>
+	</body>
+</html>

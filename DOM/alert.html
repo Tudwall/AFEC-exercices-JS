@@ -1,0 +1,66 @@
+<!-- Énoncé
+
+    Créez une page HTML contenant :
+        Un champ texte pour que l'utilisateur entre un message.
+        Un bouton pour afficher une alerte avec le message saisi.
+        Un deuxième bouton pour afficher une alerte préconfigurée.
+        Une zone pour afficher un message d'alerte dans la page elle-même (sans utiliser alert).
+
+    Utilisez JavaScript pour :
+        Afficher une alerte (alert) contenant le texte saisi lorsque le premier bouton est cliqué.
+        Afficher une alerte avec un message fixe lorsque le deuxième bouton est cliqué.
+        Afficher le message saisi directement dans la zone d'alerte intégrée (en HTML) avec un style distinct.
+
+    Bonus : Ajoutez un bouton pour réinitialiser le champ texte et la zone d'alerte intégrée. -->
+
+<!--     Consignes
+
+    Utilisez uniquement JavaScript pour gérer les événements.
+    La zone d'alerte intégrée doit avoir une bordure colorée et un style distinct (par exemple, un fond jaune).
+    Assurez-vous que les messages saisis par l'utilisateur sont valides :
+        Si le champ est vide, affichez une erreur (par exemple : "Veuillez entrer un message !"). -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const input = document.createElement("input");
+
+			const btnAlertCustom = document.createElement("button");
+			btnAlertCustom.textContent = "Alerte personalisée";
+
+			const btnAlertFix = document.createElement("button");
+			btnAlertFix.textContent = "Alerte fixe";
+
+			const btnReset = document.createElement("button");
+			btnReset.textContent = "Reset";
+
+			const zone = document.createElement("div");
+			zone.style.backgroundColor = "yellow";
+			zone.style.border = "2px solid red";
+
+			let arr = [input, btnAlertCustom, btnAlertFix, btnReset, zone];
+			arr.forEach((element) => {
+				document.body.appendChild(element);
+			});
+
+			btnReset.addEventListener("click", () => {
+				input.value = "";
+				zone.textContent = " ";
+			});
+
+			btnAlertCustom.addEventListener("click", () => {
+				zone.textContent = input.value;
+			});
+
+			btnAlertFix.addEventListener("click", () => {
+				zone.textContent = "Ceci est une alerte fixe";
+			});
+		</script>
+	</body>
+</html>

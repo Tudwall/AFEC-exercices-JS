@@ -1,0 +1,39 @@
+/* Style global du body */
+body {
+	font-family: Arial, sans-serif;
+	margin: 20px;
+	padding: 0;
+}
+
+/* Style pour la zone d'alerte affichée sur la page */
+.alert-zone {
+	margin-top: 20px;
+	padding: 10px;
+	border: 1px solid #f1c40f;
+	border-radius: 5px;
+	background-color: #fef9e7;
+	color: #d35400;
+	font-weight: bold;
+}
+
+/* Style des boutons */
+button {
+	margin: 10px 5px;
+	padding: 10px 15px;
+	cursor: pointer;
+	font-size: 16px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+
+button:hover {
+	background-color: #f1c40f;
+	color: white;
+}
+
+input[type='text'] {
+	padding: 10px;
+	font-size: 16px;
+	width: 300px;
+	margin-right: 10px;
+}

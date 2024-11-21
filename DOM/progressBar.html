@@ -1,0 +1,41 @@
+<!-- 
+Consigne :
+Ajoutez une barre de progression <div> sur la page avec un bouton "Augmenter". À chaque clic sur le bouton, la largeur de la barre augmente de 10% jusqu’à un maximum de 100%. -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			let augment = 0;
+			const suffix = "%";
+
+			const bar = document.createElement("div");
+			bar.style.border = "2px solid black";
+			bar.style.width = "100%";
+			bar.style.height = "20px";
+
+			const progress = document.createElement("div");
+			progress.style.backgroundColor = "lime";
+			progress.style.width = `${augment}${suffix}`;
+			progress.style.height = "20px";
+
+			bar.appendChild(progress);
+
+			const btnProg = document.createElement("button");
+			btnProg.textContent = "Augmenter";
+
+			btnProg.addEventListener("click", () => {
+				augment += 10;
+				progress.style.width = `${augment}${suffix}`;
+			});
+
+			document.body.appendChild(bar);
+			document.body.appendChild(btnProg);
+		</script>
+	</body>
+</html>

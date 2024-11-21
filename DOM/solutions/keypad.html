@@ -1,0 +1,48 @@
+<!-- Consigne :
+Créez un carré <div> de 50x50 pixels avec une couleur de fond (par exemple, rouge). Faites en sorte qu’il puisse être déplacé sur l'écran en utilisant les flèches du clavier.
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div
+			id="carre"
+			style="
+				width: 50px;
+				height: 50px;
+				background: red;
+				position: absolute;
+				top: 100px;
+				left: 100px;
+			"></div>
+		<script>
+			const carre = document.getElementById('carre');
+			let topPosition = 100;
+			let leftPosition = 100;
+
+			document.addEventListener('keydown', (e) => {
+				switch (e.key) {
+					case 'ArrowUp':
+						topPosition -= 10;
+						break;
+					case 'ArrowDown':
+						topPosition += 10;
+						break;
+					case 'ArrowLeft':
+						leftPosition -= 10;
+						break;
+					case 'ArrowRight':
+						leftPosition += 10;
+						break;
+				}
+				carre.style.top = `${topPosition}px`;
+				carre.style.left = `${leftPosition}px`;
+			});
+		</script>
+	</body>
+</html>
