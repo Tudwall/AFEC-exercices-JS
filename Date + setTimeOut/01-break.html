@@ -1,0 +1,29 @@
+<!-- Objectif : Créer un timer avec setTimeout pour simuler une pause avant qu'une action ne soit exécutée.
+Instructions :
+
+    Ajoutez un bouton sur votre page avec le texte "Commencer la pause".
+    Lorsque l’utilisateur clique sur le bouton, affichez le message suivant dans la console après 5 secondes :
+    "La pause est terminée !".
+    
+    Si l’utilisateur clique à nouveau sur le bouton avant la fin de la pause, annulez le précédent timer et recommencez. -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const btn = document.createElement("button");
+			btn.textContent = "Commencer la Pause";
+			btn.addEventListener("click", () => {
+				setTimeout(() => {
+					window.alert("La pause est terminée");
+				}, 5000);
+			});
+			document.body.appendChild(btn);
+		</script>
+	</body>
+</html>
