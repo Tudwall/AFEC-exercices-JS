@@ -1,0 +1,34 @@
+<div>
+	<button id="paris">Heure à Paris</button>
+	<button id="newYork">Heure à New York</button>
+	<button id="shanghai">Heure à Shanghai</button>
+</div>
+<script>
+	// Date de l'événement en UTC
+	const eventDate = new Date('2024-11-23T22:00:00Z');
+
+	// Fonction pour afficher la date dans un fuseau horaire donné
+	function showTimeInZone(timeZone, zoneName) {
+		const formatter = new Intl.DateTimeFormat('fr-FR', {
+			timeZone,
+			dateStyle: 'full',
+			timeStyle: 'short',
+		});
+		const formattedDate = formatter.format(eventDate);
+		console.log(`Heure dans ${zoneName} : ${formattedDate}`);
+		alert(`Heure dans ${zoneName} : ${formattedDate}`);
+	}
+
+	// Ajout d'événements sur les boutons
+	document.getElementById('paris').addEventListener('click', () => {
+		showTimeInZone('Europe/Paris', 'Paris');
+	});
+
+	document.getElementById('newYork').addEventListener('click', () => {
+		showTimeInZone('America/New_York', 'New York');
+	});
+
+	document.getElementById('shanghai').addEventListener('click', () => {
+		showTimeInZone('Asia/Shanghai', 'Shanghai');
+	});
+</script>

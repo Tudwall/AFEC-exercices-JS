@@ -1,0 +1,19 @@
+<button id="pauseBtn">Commencer la pause</button>
+<script>
+	let timeoutId; // Identifiant du setTimeout
+
+	document.getElementById('pauseBtn').addEventListener('click', () => {
+		// Annule le timer précédent, si un existe encore
+		clearTimeout(timeoutId);
+
+		// Affiche immédiatement l'alerte pour signaler le début de la pause
+		alert('Pause lancée, patientez 5 secondes.');
+		console.log('Pause lancée, patientez 5 secondes.');
+
+		// Démarre un nouveau timer pour afficher le message après 5 secondes
+		console.log('La pause est terminée !');
+		timeoutId = setTimeout(() => {
+			alert('La pause est terminée !');
+		}, 5000); // 5 secondes
+	});
+</script>
