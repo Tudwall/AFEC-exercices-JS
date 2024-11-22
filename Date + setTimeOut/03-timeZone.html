@@ -1,0 +1,74 @@
+<!-- Programmez un événement à une heure fixe en France (par exemple, 23 novembre 2024, 23h00).
+Ajoutez trois boutons pour afficher l’heure de cet événement dans les fuseaux horaires suivants :
+
+    Paris (Europe/Paris)
+    New York (America/New_York)
+    Shanghai (Asia/Shanghai)
+
+Lorsque l’utilisateur clique sur un bouton, affichez l’heure de l’événement dans ce fuseau dans la console ou via une alert -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const eventUTC = new Date("2024-12-25T12:00:00Z");
+			const parisBtn = document.createElement("button");
+			parisBtn.textContent = "Paris";
+			const NYBtn = document.createElement("button");
+			NYBtn.textContent = "New York";
+			const shanghaiBtn = document.createElement("button");
+			shanghaiBtn.textContent = "Shanghai";
+
+			parisBtn.addEventListener("click", () => {
+				window.alert(
+					new Intl.DateTimeFormat("fr-FR", {
+						timeZone: "Europe/Paris",
+						year: "numeric",
+						month: "numeric",
+						day: "numeric",
+						hour: "numeric",
+						minute: "numeric",
+						second: "numeric",
+					}).format(eventUTC)
+				);
+			});
+
+			NYBtn.addEventListener("click", () => {
+				window.alert(
+					new Intl.DateTimeFormat("fr-FR", {
+						timeZone: "America/New_York",
+						year: "numeric",
+						month: "numeric",
+						day: "numeric",
+						hour: "numeric",
+						minute: "numeric",
+						second: "numeric",
+					}).format(eventUTC)
+				);
+			});
+
+			shanghaiBtn.addEventListener("click", () => {
+				window.alert(
+					new Intl.DateTimeFormat("fr-FR", {
+						timeZone: "Asia/Shanghai",
+						year: "numeric",
+						month: "numeric",
+						day: "numeric",
+						hour: "numeric",
+						minute: "numeric",
+						second: "numeric",
+					}).format(eventUTC)
+				);
+			});
+
+			document.body.appendChild(shanghaiBtn);
+			document.body.appendChild(NYBtn);
+			document.body.appendChild(parisBtn);
+		</script>
+	</body>
+</html>
