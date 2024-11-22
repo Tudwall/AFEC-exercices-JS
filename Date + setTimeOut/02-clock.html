@@ -1,0 +1,53 @@
+<!-- Objectif : Créer une horloge en utilisant setInterval et l’objet Date.
+
+Instructions :
+
+    Ajoutez un élément <div> sur la page avec l’ID "clock" pour afficher l’heure actuelle.
+    Mettez à jour l’heure dans cet élément chaque seconde en affichant au format :
+    HH:MM:SS.
+    Ajoutez un bouton "Arrêter l'horloge" qui permet de stopper l’intervalle.
+
+Solution attendue :
+
+    Utilisation de setInterval pour des mises à jour régulières.
+    Manipulation de l’objet Date pour récupérer l’heure actuelle. -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const container = document.createElement("div");
+			const clock = document.createElement("p");
+			clock.id = "clock";
+
+			function update() {
+				const now = new Date();
+				clock.textContent = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+			}
+			update();
+			let clockUpdate;
+
+			const startBtn = document.createElement("button");
+			startBtn.textContent = "Démarrer l'horloge";
+			container.appendChild(startBtn);
+			startBtn.addEventListener("click", () => {
+				clockUpdate = setInterval(update, 1000);
+			});
+
+			const stopBtn = document.createElement("button");
+			stopBtn.textContent = "Arrêter l'horloge";
+			container.appendChild(stopBtn);
+			stopBtn.addEventListener("click", () => {
+				clearInterval(clockUpdate);
+			});
+
+			container.appendChild(clock);
+			document.body.appendChild(container);
+		</script>
+	</body>
+</html>
