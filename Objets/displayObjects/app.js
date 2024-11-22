@@ -1,6 +1,6 @@
 const objects = [
 	{
-		cover: "#",
+		cover: "/assets/img/be-the-cowboy.jpg",
 		artist: "Mitski",
 		album: "Be the Cowboy",
 		year: 2018,
@@ -8,7 +8,7 @@ const objects = [
 		duration: "00:32:34",
 	},
 	{
-		cover: "#",
+		cover: "/assets/img/13.jpg",
 		artist: "Black Sabbath",
 		album: "13 (Deluxe Edition)",
 		year: 2013,
@@ -16,15 +16,15 @@ const objects = [
 		duration: "01:08:00",
 	},
 	{
-		cover: "#",
+		cover: "/assets/img/dopethrone.jpg",
 		artist: "Electric Wizard",
-		album: "Funeralopolis",
+		album: "Dopethrone",
 		year: 2000,
 		songs: 9,
 		duration: "01:15:00",
 	},
 	{
-		cover: "#",
+		cover: "/assets/img/hit-me-hard-and-soft.jpg",
 		artist: "Billie Eilish",
 		album: "HIT ME HARD AND SOFT",
 		year: 2024,
@@ -32,7 +32,7 @@ const objects = [
 		duration: "00:43:50",
 	},
 	{
-		cover: "#",
+		cover: "/assets/img/man-eater.jpg",
 		artist: "El Tigr3",
 		album: "Man-Eater",
 		year: 2016,
@@ -48,33 +48,32 @@ container.style.gap = "1em";
 
 objects.forEach((element) => {
 	const card = document.createElement("div");
-	Object.values(element).forEach((value) => {
-		for (const key of Object.keys(element)) {
-			const content = document.createElement(key == "cover" ? "img" : "p");
-			// Bug: switch ou boucle mal placée
-			switch (key) {
-				case "cover":
-					content.setAttribute("src", value);
-					break;
-				case "artist":
-					content.textContent = `Artiste: ${value}`;
-					break;
-				case "album":
-					content.textContent = `Album: ${value}`;
-					break;
-				case "year":
-					content.textContent = `Sortie en ${value}`;
-					break;
-				case "songs":
-					content.textContent = `${value} morceau(x)`;
-					break;
-				case "duration":
-					content.textContent = `Durée: ${value}`;
-					break;
-			}
-			card.appendChild(content);
+	for (let key in element) {
+		const content = document.createElement(key == "cover" ? "img" : "p");
+		switch (key) {
+			case "cover":
+				content.setAttribute("src", element[key]);
+				break;
+			case "artist":
+				content.textContent = `Artiste: ${element[key]}`;
+				break;
+			case "album":
+				content.textContent = `Album: ${element[key]}`;
+				break;
+			case "year":
+				content.textContent = `Sorti en ${element[key]}`;
+				break;
+			case "songs":
+				content.textContent = `${element[key]} morceau(x)`;
+				break;
+			case "duration":
+				content.textContent = `Durée: ${element[key]}`;
+				break;
 		}
-	});
+		content.style.margin = "0.5em";
+		card.appendChild(content);
+	}
+
 	card.style.border = "2px solid black";
 	card.style.display = "flex";
 	card.style.flexDirection = "column";
