@@ -49,9 +49,31 @@ container.style.gap = "1em";
 objects.forEach((element) => {
 	const card = document.createElement("div");
 	Object.values(element).forEach((value) => {
-		const para = document.createElement("p");
-		para.textContent = value;
-		card.appendChild(para);
+		for (const key of Object.keys(element)) {
+			const content = document.createElement(key == "cover" ? "img" : "p");
+			// Bug: switch ou boucle mal placée
+			switch (key) {
+				case "cover":
+					content.setAttribute("src", value);
+					break;
+				case "artist":
+					content.textContent = `Artiste: ${value}`;
+					break;
+				case "album":
+					content.textContent = `Album: ${value}`;
+					break;
+				case "year":
+					content.textContent = `Sortie en ${value}`;
+					break;
+				case "songs":
+					content.textContent = `${value} morceau(x)`;
+					break;
+				case "duration":
+					content.textContent = `Durée: ${value}`;
+					break;
+			}
+			card.appendChild(content);
+		}
 	});
 	card.style.border = "2px solid black";
 	card.style.display = "flex";
