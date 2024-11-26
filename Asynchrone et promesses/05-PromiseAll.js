@@ -2,25 +2,29 @@
 
 const checkHotelAvailability = (hotel) => {
 	return new Promise((resolve, reject) => {
-		if (hotel === "Hilton") {
-			resolve("Réservation d'hotel possible");
-		} else {
-			reject("Impossible de réserver");
-		}
+		setTimeout(() => {
+			if (hotel === "Hilton") {
+				resolve("Réservation d'hotel possible");
+			} else {
+				reject("Impossible de réserver");
+			}
+		});
 	});
 };
 
 const checkFlightAvailability = (flightNumber) => {
 	return new Promise((resolve, reject) => {
-		if (flightNumber === "AF123") {
-			resolve("Réservation de billet possible");
-		} else {
-			reject("Impossible de réserver");
-		}
+		setTimeout(() => {
+			if (flightNumber === "AF123") {
+				resolve("Réservation de billet possible");
+			} else {
+				reject("Impossible de réserver");
+			}
+		}, 1500);
 	});
 };
 
-const planTrip = (hotel, flight) => {
+const planTrip = async (hotel, flight) => {
 	Promise.all([checkHotelAvailability(hotel), checkFlightAvailability(flight)])
 		.then((value) => {
 			value.forEach((element) => {
@@ -28,7 +32,7 @@ const planTrip = (hotel, flight) => {
 			});
 		})
 		.catch((error) => {
-			console.error(error);
+			console.error("error:", error);
 		});
 };
 
