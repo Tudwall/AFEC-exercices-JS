@@ -9,9 +9,10 @@ const getNumber = () => {
 	return new Promise((resolve) => {
 		console.log("Début timer");
 		setTimeout(() => {
-			console.log(Math.floor(Math.random() * 10));
 			resolve();
 		}, 2000);
+	}).then(() => {
+		console.log(Math.floor(Math.random() * 10));
 	});
 };
 
