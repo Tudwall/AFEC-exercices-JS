@@ -22,7 +22,7 @@ const fetchUserData = (id) => {
 					name: `user ${id}`,
 				});
 			} else {
-				reject(`Donnée de ${id} indisponibles`);
+				reject(`Données de ${id} indisponibles`);
 			}
 		}, delay);
 	});
