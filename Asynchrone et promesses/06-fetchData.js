@@ -12,35 +12,30 @@ Instructions :
         Si une promesse est résolue, affichez un message comme "Données récupérées pour l'utilisateur X".
         Si une promesse est rejetée, affichez un message comme "Erreur lors de la récupération des données pour l'utilisateur X". */
 
-const fetchUserData = (...args) => {
-	const delay = Math.floor(Math.random() * 2000);
-	const users = [...args];
+const fetchUserData = (id) => {
 	return new Promise((resolve, reject) => {
-		for (const user in users) {
-			setTimeout(() => {
-				if (user % 2 === 0) {
-					console.log("ici");
-
-					resolve(`Données récupérées pour l'utilisateur ${user}`);
-				} else {
-					console.log("là");
-
-					reject(
-						`Erreur lors de la récupération des données de l'utilisateur ${user}`
-					);
-				}
-			}, delay);
-		}
-
-		Promise.allSettled([...args])
-			.then((result) => {
-				console.log(result);
-			})
-			.catch((error) => {
-				console.error("erreur", error);
-				throw new Error(error);
-			});
+		const delay = Math.floor(Math.random() * 2000);
+		setTimeout(() => {
+			if (id % 2 === 0) {
+				resolve({
+					id,
+					name: `user ${id}`,
+				});
+			} else {
+				reject(`Donnée de ${id} indisponibles`);
+			}
+		}, delay);
 	});
 };
 
-fetchUserData(2500, 1555, 2356);
+const ids = [2500, 1555, 2356];
+
+Promise.allSettled(ids.map((id) => fetchUserData(id))).then((values) => {
+	values.forEach((value) => {
+		if (value.status === "fulfilled") {
+			console.log(`Données: ${value.value.id} ${value.value.name}`);
+		} else {
+			console.error(value.reason);
+		}
+	});
+});
