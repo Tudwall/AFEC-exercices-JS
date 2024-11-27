@@ -12,32 +12,35 @@ Instructions :
         Si une promesse est résolue, affichez un message comme "Données récupérées pour l'utilisateur X".
         Si une promesse est rejetée, affichez un message comme "Erreur lors de la récupération des données pour l'utilisateur X". */
 
-const fetchUserData = (id) => {
+const fetchUserData = (...args) => {
+	const delay = Math.floor(Math.random() * 2000);
+	const users = [...args];
 	return new Promise((resolve, reject) => {
-		const delay = Math.floor(Math.random() * 5000);
-		setTimeout(() => {
-			if (id % 2 === 0) {
-				resolve(`Données récupérées pour l'utilisateur ${id}`);
-			} else {
-				reject(
-					`Erreur lors de la récupération des données de l'utilisateur ${id}`
-				);
-			}
-		}, delay);
-	});
-};
+		for (const user in users) {
+			setTimeout(() => {
+				if (user % 2 === 0) {
+					console.log("ici");
 
-const displayUserData = async (...args) => {
-	const users = await [...args];
-	users.forEach((element) => {
-		try {
-			let userData = fetchUserData(element);
-			console.log(userData);
-		} catch (error) {
-			console.error(error);
-			throw new Error(error);
+					resolve(`Données récupérées pour l'utilisateur ${user}`);
+				} else {
+					console.log("là");
+
+					reject(
+						`Erreur lors de la récupération des données de l'utilisateur ${user}`
+					);
+				}
+			}, delay);
 		}
+
+		Promise.allSettled([...args])
+			.then((result) => {
+				console.log(result);
+			})
+			.catch((error) => {
+				console.error("erreur", error);
+				throw new Error(error);
+			});
 	});
 };
 
-displayUserData(2500, 1555, 2356);
+fetchUserData(2500, 1555, 2356);
