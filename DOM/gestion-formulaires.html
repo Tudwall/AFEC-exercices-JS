@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			form {
+				display: flex;
+				flex-direction: column;
+				width: 25%;
+			}
+		</style>
+
+		<form id="login-form">
+			<label for="email">email</label>
+			<input type="text" id="email" />
+			<label for="password">password</label>
+			<input type="text" id="password" />
+			<button type="submit">Connexion</button>
+		</form>
+		<script>
+			const form = document.getElementById("login-form");
+			const emailEl = document.getElementById("email");
+			const passwordEl = document.getElementById("password");
+			const submitBtn = document.querySelector("button");
+
+			form.addEventListener("submit", function (event) {
+				event.preventDefault();
+				const email = emailEl.value.trim();
+				const password = passwordEl.value.trim();
+
+				if (email == "" || password == "") {
+					window.alert("Tous les champs doivent être remplis");
+					return;
+				}
+
+				const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+				if (!emailRegex.test(email)) {
+					window.alert("Veuillez entrer une adresse email valide");
+					return;
+				}
+				window.alert("Formulaire soumis");
+			});
+		</script>
+	</body>
+</html>
