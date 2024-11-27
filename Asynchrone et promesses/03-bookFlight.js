@@ -28,6 +28,7 @@ const checkFlightAvailability = (flightNumber) => {
 };
 
 /* const bookFlight = (flightNumber) => {
+	await delay(2000)
 	checkFlightAvailability(flightNumber)
 		.then((value) => {
 			console.log(`${flightNumber}: ${value}`);
@@ -38,6 +39,7 @@ const checkFlightAvailability = (flightNumber) => {
 }; */
 
 async function bookFlight(flightNumber) {
+	await delay(2000);
 	try {
 		const available = await checkFlightAvailability(flightNumber);
 		if (available) {
