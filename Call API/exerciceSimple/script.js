@@ -11,7 +11,6 @@ const fetchChien = () => {
 			return response.json();
 		})
 		.then((data) => {
-			console.log(data);
 			image.setAttribute("src", `${data.message}`);
 			main.appendChild(image);
 		})
