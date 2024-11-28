@@ -1,0 +1,40 @@
+body {
+	font-family: Arial, sans-serif;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	background-color: #f9f9f9;
+}
+
+h1 {
+	color: #333;
+}
+
+#dogImageContainer {
+	margin-top: 20px;
+}
+
+#dogImage {
+	max-width: 80%;
+	height: auto;
+	border-radius: 8px;
+}
+
+#errorMessage {
+	color: red;
+	margin-top: 20px;
+}
+
+button {
+	background-color: #4caf50;
+	color: white;
+	padding: 10px 20px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+button:hover {
+	background-color: #45a049;
+}
