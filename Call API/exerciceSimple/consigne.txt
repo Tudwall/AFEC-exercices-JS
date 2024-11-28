@@ -1,0 +1,7 @@
+Exercice simple d'appel avec Fetch : 
+
+- un titre 
+- un bouton qui déclenche un appel vers l'API dont l'url est https://dog.ceo/api/breeds/image/random pour obtenir une photo de chien 
+- La gestion des erreurs 
+- Vous rendrez 3 fichiers : script, html, css 
+- Vous avez une capture du rendu voulu dans Rendu.png
