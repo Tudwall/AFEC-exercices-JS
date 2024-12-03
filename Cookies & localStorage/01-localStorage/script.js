@@ -22,3 +22,12 @@ loadBtn.addEventListener("click", () => {
 clearBtn.addEventListener("click", () => {
 	localStorage.clear();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+	const nom = localStorage.getItem("nom");
+	if (nom) {
+		input.value = nom;
+	} else {
+		input.value = "";
+	}
+});
