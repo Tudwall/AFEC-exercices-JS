@@ -1,0 +1,9 @@
+Exercice 3 : Gestion de préférences utilisateur avec Cookies (avancé)
+
+Objectif : Utiliser les cookies pour sauvegarder des préférences utilisateur.
+
+    Créez une page avec un formulaire permettant de sélectionner :
+        Une langue (ex. : français, anglais).
+        Un thème (ex. : clair, sombre).
+    Lorsque l'utilisateur soumet le formulaire, sauvegardez ses choix dans des cookies avec une durée d'expiration de 7 jours.
+    Lors du rechargement de la page, appliquez automatiquement les préférences en fonction des cookies.
