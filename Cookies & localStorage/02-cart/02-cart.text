@@ -1,0 +1,10 @@
+Exercice 2 : Panier d'achat avec SessionStorage (intermédiaire)
+
+Objectif : Manipuler des données complexes dans SessionStorage.
+
+    Créez une page avec une liste de produits (par exemple : pomme, banane, orange) et un bouton "Ajouter au panier" pour chaque produit.
+    Lorsque l'utilisateur clique sur un bouton, ajoutez le produit correspondant à un panier sauvegardé dans SessionStorage (sous forme de tableau JSON).
+    Ajoutez une section "Panier" où les produits actuellement sélectionnés sont affichés.
+    Ajoutez un bouton "Vider le panier" pour supprimer toutes les données de SessionStorage.
+
+    
