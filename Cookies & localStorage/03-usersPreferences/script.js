@@ -43,11 +43,11 @@ const getCookie = (name) => {
 	return null;
 }; */
 
-function getCookie(name) {
+const getCookie = (name) => {
 	const value = `; ${document.cookie}`;
 	const parts = value.split(`; ${name}=`);
 	if (parts.length === 2) return parts.pop().split(";").shift();
-}
+};
 
 const changeBackgroundColor = (color) => {
 	if (color == "dark") {
