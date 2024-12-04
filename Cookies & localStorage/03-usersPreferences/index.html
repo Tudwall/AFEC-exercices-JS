@@ -7,11 +7,12 @@
 	</head>
 	<body>
 		<form>
-			<fieldset>
+			<fieldset id="lang">
 				<label
 					><input
 						type="radio"
 						name="language"
+						value="french"
 						id="radio-french"
 						checked
 					/>français</label
@@ -20,22 +21,28 @@
 					><input
 						type="radio"
 						name="language"
+						value="english"
 						id="radio-english"
 					/>Anglais</label
 				>
 			</fieldset>
-			<fieldset>
+			<fieldset id="theme">
 				<label
 					><input
 						type="radio"
 						name="theme"
+						value="light"
 						id="radio-light-theme"
 						checked
 					/>Theme clair</label
 				>
 				<label
-					><input type="radio" name="theme" id="radio-dark-theme" />Theme
-					sombre</label
+					><input
+						type="radio"
+						name="theme"
+						value="dark"
+						id="radio-dark-theme"
+					/>Theme sombre</label
 				>
 			</fieldset>
 			<button type="submit" id="submit-btn">Soumettre</button>
