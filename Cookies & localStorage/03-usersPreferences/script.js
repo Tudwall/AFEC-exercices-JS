@@ -31,7 +31,8 @@ const setCookie = (name, value, days) => {
 	document.cookie = `${name}=${value}; ${expires};path=/`;
 };
 
-/* const getCookie = (name) => {
+/* Autre façon de faire:
+const getCookie = (name) => {
 	const nameEQ = `${name}=`;
 	const ca = document.cookie.split(";");
 	for (let i = 0; i < ca.length; i++) {
