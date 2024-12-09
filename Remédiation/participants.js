@@ -12,25 +12,31 @@ let bobIdx = participants.indexOf("Bob");
 participants.splice(bobIdx, 1, "Beatrice");
 console.log(participants);
 
-const firstThree = participants.slice(2);
-console.log(firstThree);
+const firstThree = participants.slice(2, 4);
+console.log("trois premiers " + firstThree);
 
-function manageArray(action, index, ...value) {
+function manageArray(action, index, value) {
 	switch (action) {
 		case "add":
-			participants.splice(index, 0, value);
+			participants.splice(index, 0, ...value);
 			break;
 		case "remove":
 			participants.splice(participants.indexOf(index), 1);
 			break;
 		case "replace":
-			participants.splice(index + 1, 0, value);
+			participants.splice(index + 1, 1, value);
 			break;
+		default:
+			return "Paramètre inconnu";
 	}
 }
 
-manageArray("add", participants.length, "Bob", "John");
+const nomsAAjouter = ["Bob", "John"];
+
+manageArray("add", participants.length, nomsAAjouter);
 console.log(participants);
 
 manageArray("remove", "Diana");
 console.log(participants);
+
+console.log(manageArray("coucou"));
