@@ -13,9 +13,13 @@ class Livre {
 		this.titre = titre;
 		this.auteur = auteur;
 	}
+
+	afficherDetails() {
+		console.log(`Le livre "${this.titre}" est écrit par ${this.auteur}`);
+	}
 }
 
 const livre1 = new Livre("Le Seigneur des Anneaux", "J.R.R. Tolkien");
-console.log(livre1);
+livre1.afficherDetails();
 const livre2 = new Livre("La Ferme des Animaux", "George Orwell");
-console.log(livre2);
+livre2.afficherDetails();
