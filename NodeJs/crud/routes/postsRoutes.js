@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 let posts = require("../models/posts");
 
+router.use(express.json());
+
 // Créer
 router.post("/", (req, res) => {
 	console.log(req.body);
@@ -41,16 +43,21 @@ router.get("/", (req, res) => {
 router.get("/:user", (req, res) => {
 	const { user } = req.params;
 	console.log(user);
-	const post = posts.find((post) => post.user === user);
-	if (post) {
+	let postsFound = [];
+	posts.forEach((post) => {
+		if (post.user === user) {
+			postsFound.push(post);
+		}
+	});
+	if (postsFound.length > 0) {
 		res.json({
 			message: `Post trouvé`,
-			post,
+			postsFound,
 		});
 	} else {
 		return res.status(404).json({
 			message: `Impossible de trouver les posts de ${user}`,
-			post,
+			postsFound,
 		});
 	}
 });
@@ -91,11 +98,12 @@ router.put("/:id", (req, res) => {
 });
 
 // Supprimer
-router.delete("/:id", (res, req) => {
+router.delete("/:id", (req, res) => {
 	const { id } = req.params;
 	const post = posts.find((post) => post.id === parseInt(id));
 	if (post) {
 		posts = posts.splice((posts.indexOf(post), 1));
+
 		res.status(200).json({
 			message: `Post ${id} supprimé`,
 		});

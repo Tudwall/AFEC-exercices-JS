@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 let users = require("../models/users");
 
+router.use(express.json());
+
 // Créer
 router.post("/", (req, res) => {
 	console.log(req.body);

@@ -8,9 +8,6 @@ const postsRoutes = require("./routes/postsRoutes");
 app.use("/users", userRoutes);
 app.use("/posts", postsRoutes);
 
-// middleware
-app.use(express.json());
-
 app.get("/", (req, res) => {
 	res.send("hello world");
 });
