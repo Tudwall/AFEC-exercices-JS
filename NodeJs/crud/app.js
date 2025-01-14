@@ -3,8 +3,10 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const userRoutes = require("./routes/userRoutes");
+const postsRoutes = require("./routes/postsRoutes");
 
 app.use("/users", userRoutes);
+app.use("/posts", postsRoutes);
 
 // middleware
 app.use(express.json());
