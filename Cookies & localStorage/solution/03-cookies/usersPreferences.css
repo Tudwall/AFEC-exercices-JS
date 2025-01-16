@@ -1,0 +1,120 @@
+/* General style to unify appearance */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+ 
+}
+
+body.light {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Thème sombre */
+body.dark {
+    background-color: #333;
+    color: #f4f4f4;
+}
+
+/* Main container */
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+/* Titles */
+h1, h2, h3 {
+    color: #2c3e50;
+}
+
+/* Links */
+a {
+    color: #27ae60;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #1e8449;
+}
+
+/* Buttons */
+button {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1e8449;
+}
+
+/* Form styles */
+form {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="email"],
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+form button {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #1e8449;
+}
+
+/* Alert styles */
+.alert {
+    text-align: center;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}

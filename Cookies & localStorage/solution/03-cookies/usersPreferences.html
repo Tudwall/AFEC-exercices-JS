@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="usersPreferences.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+<form id="form">
+ <label for="language">Langue :</label>
+    <select id="language">
+      <option value="fr">Français</option>
+      <option value="en">Anglais</option>
+    </select>
+     <label for="theme">Thème :</label>
+    <select id="theme">
+      <option value="light">Clair</option>
+      <option value="dark">Sombre</option>
+    </select>
+      <button type="submit">Sauvegarder</button>
+</form>
+
+        <div id="alert" class="alert"></div></div>
+    <script src="cookieStore.js"></script>
+</body>
+</html>

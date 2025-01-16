@@ -1,0 +1,15 @@
+Exercice 5 : Système de notifications avec LocalStorage et Cookies (Avancé)
+
+Objectif : Combiner LocalStorage et Cookies pour une gestion avancée des notifications.
+Consignes :
+
+    Créez une page avec un système de notifications qui affiche un message une seule fois par session.
+
+    Utilisez un cookie pour vérifier si la notification a déjà été affichée pendant la session actuelle.
+
+        Si la notification a déjà été affichée, ne l'affichez pas à nouveau tant que la session n'est pas terminée (lorsque la page est rafraîchie ou fermée).
+
+    Enregistrez dans LocalStorage le nombre total de fois que l'utilisateur a vu la notification (toutes sessions confondues).
+    Par exemple quand il ferme la notification on peut considérer qu'il l'a vu et afficher le message en dessous 
+
+    Affichez le nombre total de notifications montrées en bas de la page.

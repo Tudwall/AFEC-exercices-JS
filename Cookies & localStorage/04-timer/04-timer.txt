@@ -1,0 +1,7 @@
+Exercice 4 : Chronomètre avec sauvegarde de session (avancé)
+
+Objectif : Utiliser SessionStorage pour gérer une session utilisateur.
+
+    Créez une page avec un bouton "Démarrer" qui lance un chronomètre affichant le temps écoulé en secondes.
+    Utilisez SessionStorage pour sauvegarder le temps écoulé, de sorte que si l'utilisateur rafraîchit la page, le chronomètre reprenne là où il s'était arrêté.
+    Ajoutez un bouton "Réinitialiser" pour remettre le chronomètre à zéro.

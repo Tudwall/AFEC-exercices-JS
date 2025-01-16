@@ -49,17 +49,9 @@ router.get("/:user", (req, res) => {
 			postsFound.push(post);
 		}
 	});
-	if (postsFound.length > 0) {
-		res.json({
-			message: `Post trouvé`,
-			postsFound,
-		});
-	} else {
-		return res.status(404).json({
-			message: `Impossible de trouver les posts de ${user}`,
-			postsFound,
-		});
-	}
+	res.json({
+		postsFound,
+	});
 });
 
 // Modifier
@@ -103,11 +95,11 @@ router.delete("/:id", (req, res) => {
 	const post = posts.find((post) => post.id === parseInt(id));
 	if (post) {
 		posts = posts.splice((posts.indexOf(post), 1));
-
-		res.status(200).json({
-			message: `Post ${id} supprimé`,
-		});
+		console.info("c'est supprimé pour de vrai");
 	}
+	res.status(200).json({
+		message: `Post ${id} supprimé`,
+	});
 });
 
 module.exports = router;
