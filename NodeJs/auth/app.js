@@ -6,16 +6,23 @@ app.use(express.json());
 
 const authenticate = (req, res, next) => {
 	if (!req.headers["authorization"]) {
-		return res.status(403).send("Accès interdit");
+		res.status(403).send("Accès interdit");
+	} else {
+		req.user = {
+			name: "John",
+			role: "admin",
+			id: 1,
+		};
+		next();
 	}
-	next();
 };
 
 const checkRole = (req, res, next) => {
-	if (!req.body.role == "admin") {
-		return res.status(403).send("Permissions insuffisantes");
+	if (req.user?.role && req.user.role !== "admin") {
+		res.status(403).send("Permissions insuffisantes");
+	} else {
+		next();
 	}
-	next();
 };
 
 app.get("/public", (req, res) => {
@@ -27,8 +34,7 @@ app.get("/private", authenticate, (req, res) => {
 	res.send("Contenu privé");
 });
 
-app.get("/admin", checkRole, (req, res) => {
-	console.log(req.body.role);
+app.get("/admin", authenticate, checkRole, (req, res) => {
 	res.send("Contenu accessible");
 });
 
