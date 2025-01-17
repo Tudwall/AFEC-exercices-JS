@@ -3,7 +3,7 @@ const autoIncrement = require("mongoose-sequence")(mongoose);
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-	name: String, // String is shorthand for {type: String}
+	name: String,
 	email: String,
 	age: Number,
 	password: String,
