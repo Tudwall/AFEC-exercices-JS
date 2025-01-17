@@ -12,12 +12,23 @@ router.get("/all", (req, res) => {
 	res.send("You are trying to get all users");
 });
 
-router.get("/:email", (req, res) => {
-	const user = userModel.find(req.params.email);
-	res.status(200).json({
-		user,
-	});
-	res.send(`You are looking for user ${id}`);
+router.get("/:id", async (req, res) => {
+	try {
+		const id = req.params.id;
+		const user = await userModel.find({ id: req.params.id });
+		console.log(user);
+		if (user.length !== 0) {
+			res.status(200).json({
+				user,
+			});
+		} else {
+			res.status(404).json({
+				message: `Error 404: User ${id} not found`,
+			});
+		}
+	} catch (err) {
+		res.send(err);
+	}
 });
 
 router.post("/", async (req, res) => {
