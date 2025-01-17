@@ -47,10 +47,21 @@ router.post("/", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-	await userModel.deleteOne({ id: req.params.id });
-	res.status(200).json({
-		message: `User ${req.params.id} has been deleted`,
-	});
+	const id = req.params.id;
+	try {
+		if (id > 0) {
+			await userModel.findOneAndDelete(id);
+			res.status(200).json({
+				message: `User ${id} has been deleted`,
+			});
+		} else {
+			res.status(400).json({
+				message: `Must query a valid id`,
+			});
+		}
+	} catch (err) {
+		res.send(err);
+	}
 });
 
 module.exports = router;
