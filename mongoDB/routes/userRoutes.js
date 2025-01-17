@@ -13,16 +13,15 @@ router.get("/all", (req, res) => {
 });
 
 router.get("/:email", (req, res) => {
-	const user = userSchema.find(req.params.email);
+	const user = userModel.find(req.params.email);
 	res.status(200).json({
 		user,
 	});
-	res.send(`You are looking for use ${id}`);
+	res.send(`You are looking for user ${id}`);
 });
 
-router.post("/:id", async (req, res) => {
+router.post("/", async (req, res) => {
 	const user = {
-		id: req.params.id,
 		name: req.body.name,
 		email: req.body.email,
 		age: req.body.age,
@@ -32,7 +31,14 @@ router.post("/:id", async (req, res) => {
 	const newUser = new userModel(user);
 	await newUser.save();
 	res.status(200).json({
-		message: `User ${user.id} created`,
+		message: `User created`,
+	});
+});
+
+router.delete("/:id", async (req, res) => {
+	await userModel.deleteOne({ id: req.params.id });
+	res.status(200).json({
+		message: `User ${req.params.id} has been deleted`,
 	});
 });
 
