@@ -1,6 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv").config();
-const mongooseConnect = require("./config/mongooseConnect");
+const mongooseConnect = require("./config/db.js");
 
 const app = express();
 
@@ -8,7 +8,7 @@ mongooseConnect();
 
 const port = 3000;
 
-const userRoutes = require("./routes/userRoutes");
+const userRoutes = require("./routes/userRouter.js");
 
 app.use(express.json());
 
