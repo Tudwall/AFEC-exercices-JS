@@ -1,12 +1,24 @@
-import mongoose from "mongoose";
+import express from "express";
 import dotenv from "dotenv/config";
+import mongooseConnect from "./config/db.js";
 import Profile from "./models/Profile.js";
 import BlogPost from "./models/BlogPost.js";
 import User from "./models/User.js";
 import Student from "./models/Student.js";
 import Course from "./models/Course.js";
+import userRoutes from "./routes/userRoutes.js";
 
-mongoose.connect(process.env.URL_DATABASE);
+const app = express();
+const PORT = 3000;
+
+mongooseConnect();
+
+app.use(express.json());
+app.use("/users", userRoutes);
+
+app.listen(PORT, (req, res) => {
+	console.info(`server running on ${PORT}`);
+});
 
 const post1 = await BlogPost.create({
 	title: "Premier Article",
