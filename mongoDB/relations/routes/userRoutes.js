@@ -46,16 +46,29 @@ router.get("/:id", async (req, res) => {
 
 // créer un user
 router.post("/", async (req, res) => {
-	const user = {
-		name: req.body.name,
-		email: req.body.email,
-		password: req.body.password,
-	};
-	const newUser = new userModel(user);
-	await newUser.save();
-	res.status(201).json({
-		message: `User created`,
-	});
+	try {
+		if (!req.body?.name || !req.body?.email || !req.body?.password) {
+			res.status(400).json({
+				message: `Impossible de créer l'utilisateur: information manquante`,
+			});
+			throw new Error(
+				"Impossible de créer l'utilisateur: information manquante"
+			);
+		} else {
+			const user = {
+				name: req.body.name,
+				email: req.body.email,
+				password: req.body.password,
+			};
+			const newUser = new userModel(user);
+			await newUser.save();
+			res.status(201).json({
+				message: `User created`,
+			});
+		}
+	} catch (err) {
+		console.error(err);
+	}
 });
 
 module.exports = router;
