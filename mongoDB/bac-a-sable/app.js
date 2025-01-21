@@ -1,24 +1,12 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv/config";
+import Profile from "./models/Profile.js";
+import BlogPost from "./models/BlogPost.js";
+import User from "./models/User.js";
+import Student from "./models/Student.js";
+import Course from "./models/Course.js";
 
 mongoose.connect(process.env.URL_DATABASE);
-
-// Modèle profil
-const ProfileSchema = new mongoose.Schema({
-	bio: String,
-	website: String,
-});
-
-const Profile = mongoose.model("Profile", ProfileSchema);
-
-// Modèle blog post
-const BlogPostSchema = new mongoose.Schema({
-	title: String,
-	content: String,
-	author: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-});
-
-const BlogPost = mongoose.model("BlogPost", BlogPostSchema);
 
 const post1 = await BlogPost.create({
 	title: "Premier Article",
@@ -28,21 +16,6 @@ const post2 = await BlogPost.create({
 	title: "Deuxième Article",
 	content: "Deuxième article texte",
 });
-
-// Modèle user
-const UserSchema = new mongoose.Schema({
-	name: { type: String, required: true },
-	email: { type: String, required: true },
-	password: { type: String, required: true },
-	profile: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "Profile",
-		required: true,
-	},
-	blogPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: "BlogPost" }],
-});
-
-const User = mongoose.model("User", UserSchema);
 
 const profil = await Profile.create({ bio: "dev web", website: "localhost" });
 
@@ -63,25 +36,7 @@ const userWithPosts = await User.findById(user._id).populate("blogPosts");
 
 console.log(userWithProfile);
 
-// ----------------------------------------------------
-
-// Modèle d'étudiant
-const StudentSchema = new mongoose.Schema({
-	name: String,
-	email: String,
-	courses: [{ type: mongoose.Schema.Types.ObjectId, ref: "Course" }],
-});
-
-const Student = mongoose.model("Student", StudentSchema);
-
-// Modèle de cours
-const CourseSchema = new mongoose.Schema({
-	title: String,
-	description: String,
-	students: [{ type: mongoose.Schema.Types.ObjectId, ref: "Student" }],
-});
-
-const Course = mongoose.model("Course", CourseSchema);
+// ---------------------------------------------------
 
 const student1 = new Student({
 	name: "Charlie",
