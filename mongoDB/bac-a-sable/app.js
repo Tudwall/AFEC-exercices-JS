@@ -30,12 +30,6 @@ user.blogPosts = [post1._id, post2._id];
 console.log(user);
 await user.save();
 
-const userWithProfile = await User.findById(user._id).populate("profile");
-
-const userWithPosts = await User.findById(user._id).populate("blogPosts");
-
-console.log(userWithProfile);
-
 // ---------------------------------------------------
 
 const student1 = new Student({
