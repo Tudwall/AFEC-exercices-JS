@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
 		const users = await User.find();
 		if (users) {
 			res.status(200).json({
-				User,
+				users,
 			});
 		} else {
 			res.status(404).json({
@@ -76,5 +76,35 @@ router.post("/", async (req, res) => {
 });
 
 // update user
+router.patch("/:id/", async (req, res) => {
+	try {
+		if (!req.params?.id) {
+			res.status(400).json({
+				message: `id required`,
+			});
+			throw new Error(err);
+		} else {
+			const id = req.params.id;
+			let user = await User.findById(id);
+			if (user.length !== 0) {
+				user = {
+					name: req.body?.name,
+					email: req.body?.email,
+				};
+				await user.save();
+				res.status(201).json({
+					message: `user updated`,
+				});
+			} else {
+				res.status(404).json({
+					message: `user not found`,
+				});
+				throw new Error(err);
+			}
+		}
+	} catch (err) {
+		console.error(err);
+	}
+});
 
 export default router;
