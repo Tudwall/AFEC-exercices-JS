@@ -7,10 +7,12 @@ const SIUserSchema = new mongoose.Schema({
 	password: { type: String, required: true, select: false },
 	collection: { type: Array, required: true },
 	wishlist: { type: Array, required: true },
-	reviews: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "Reviews",
-	},
+	reviews: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "SIReview",
+		},
+	],
 });
 
 const SIUser = mongoose.model("SIUser", SIUserSchema);
