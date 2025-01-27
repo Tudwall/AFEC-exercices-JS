@@ -81,8 +81,7 @@ const client = new MongoClient(URI);
 		const cursorUpdate = await products.updateOne(
 			// Soft Delete
 			{ name: "Produit 1" },
-			{ $set: { isDeleted: true } },
-			{ $set: { deletedAt: new Date() } }
+			{ $set: { isDeleted: true, deletedAt: new Date() } }
 		);
 
 		// console.info("Document mis à jour avec succès", cursorUpdate);
