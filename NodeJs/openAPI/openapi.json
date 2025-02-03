@@ -1,0 +1,57 @@
+{
+	"openapi": "3.0.3",
+	"info": {
+		"title": "Exercice OpenAPI",
+		"description": "Exercice OpenAPI de l'AFEC",
+		"license": {
+			"name": "Apache 2.0",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+		},
+		"version": "1.0"
+	},
+	"externalDocs": {
+		"description": "Find out more about Swagger",
+		"url": "http://swagger.io"
+	},
+	"paths": {
+		"/hello": {
+			"get": {
+				"summary": "dit bonjour",
+				"description": "permet de vérifier si le serveur est bien lancé",
+				"operationid": "rechercher par id",
+				"responses": {
+					"200": {
+						"description": "le serveur marche"
+					}
+				}
+			}
+		},
+
+		"/users": {
+			"get": {
+				"users": {
+					"summary": "Récupérer tout les users",
+					"description": "Récupère un tableau d'objets contenant les users",
+					"responses": {
+						"200": {
+							"description": "La requête a abouti",
+							"content": {
+								"application/json": {
+									"schema": {
+										"type": "array",
+										"items": {
+											"type": "object"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Impossible de récupérer les users"
+					}
+				}
+			}
+		}
+	}
+}
