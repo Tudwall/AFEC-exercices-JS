@@ -27,15 +27,6 @@ const users = [
 	},
 ];
 
-const hashPassword = async (pwd) => {
-	try {
-		const hash = await argon2.hash(pwd);
-		return hash;
-	} catch (err) {
-		console.error("no pwd");
-	}
-};
-
 app.post("/signup", async (req, res) => {
 	const { id, name, pwd } = req.body;
 	if (!id || !name || !pwd) {
@@ -71,11 +62,33 @@ app.post("/login", async (req, res) => {
 			httpOnly: true,
 			maxAge: 24 * 60 * 60 * 1000,
 		});
-        res.send("connecté")
+		res.send("connecté");
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send("server error");
 	}
+});
+
+const checkToken = (req, res, next) => {
+	const userCookie = req.cookies.token;
+	if (!userCookie) {
+		return res.status(401).send("missing cookie");
+	}
+	jwt.verify(userCookie, process.env.JWT_SECRET, (err, decoded) => {
+		console.log(err, decoded);
+		const user = users.find((user) => user.id === req.id);
+		if (!user) {
+			return res.status(401).send("accès refusé");
+		} else {
+			req.user = user;
+			next();
+		}
+	});
+};
+
+app.get("/", checkToken, async (req, res) => {
+	console.log(req.user);
+	res.send(users);
 });
 
 app.listen(PORT, () => console.info(`server running on ${PORT}`));
