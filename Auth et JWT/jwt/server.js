@@ -23,7 +23,7 @@ const users = [
 	},
 ];
 
-const blackList = [];
+let blackList = [];
 
 app.post("/signup", async (req, res) => {
 	const { id, name, pwd } = req.body;
@@ -87,7 +87,7 @@ app.get("/", checkToken, async (req, res) => {
 });
 
 app.post("/logout", (req, res) => {
-	const userCookie = req.cookie;
+	const userCookie = req.cookie.token;
 	if (!userCookie) {
 		res.status(401).send("must be logged in to log out");
 	}
