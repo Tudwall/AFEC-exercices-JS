@@ -25,7 +25,8 @@ CREATE TABLE
 INSERT INTO
     products (name, description, price)
 VALUES
-    ("chips", "chips au vinaigre", 0.99);
+    ("chips", "chips au vinaigre", 0.99),
+    ("shampooing", "shampooing aux oeufs", 2.49);
 
 INSERT INTO
     ratings (quality, price, utility, product_id)

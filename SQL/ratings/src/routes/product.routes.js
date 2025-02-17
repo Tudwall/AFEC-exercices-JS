@@ -7,6 +7,9 @@ import ResourceNotFound from "../errors/resourceNotFound.exception.js";
 const router = express.Router();
 const productController = new ProductController();
 
+router.post("/new", (req, res, next) =>
+	productController.createProduct(req, res, next)
+);
 router.get("/", (req, res, next) =>
 	productController.getProducts(req, res, next)
 );

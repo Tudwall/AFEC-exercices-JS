@@ -7,12 +7,29 @@ class ProductService {
 		this.productRepository = new ProductRepository();
 	}
 
+	async createProduct({ name, description, price }) {
+		try {
+			const newProduct = await this.productRepository.createProduct({
+				name,
+				description,
+				price,
+			});
+			if (!newProduct) {
+				throw new ArgumentRequiredException("Argument manquant");
+			}
+			return newProduct;
+		} catch (err) {
+			console.error(`erreur service: ${err}`);
+			throw err;
+		}
+	}
+
 	async getProducts() {
 		try {
 			const products = await this.productRepository.getProducts();
 			return products;
 		} catch (err) {
-			console.error(err);
+			console.error(`erreur service: ${err}`);
 		}
 	}
 
@@ -23,7 +40,6 @@ class ProductService {
 
 		try {
 			const product = await this.productRepository.getProductById(id);
-			console.log(product);
 			if (!product) {
 				throw new ResourceNotFound("Produit introuvable");
 			}
