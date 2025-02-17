@@ -7,7 +7,7 @@ use ratings;
 CREATE TABLE
     products (
         id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-        name VARCHAR(100),
+        name VARCHAR(100) unique,
         description VARCHAR(250),
         price DECIMAL(4, 2)
     );
